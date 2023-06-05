@@ -12,7 +12,7 @@ public class Prodotto {
     private double iva;
 
     // CONSTRUCTORS
-    public Prodotto(int codice, String nome, String descrizione, double prezzo, double iva) {
+    public Prodotto(String nome, String descrizione, double prezzo, double iva) {
         this.codice = generateRandomCode();
         this.nome = nome;
         this.descrizione = descrizione;
