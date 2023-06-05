@@ -1,5 +1,7 @@
 package org.lessons.java.bank;
 
+import java.util.Random;
+
 public class Conto {
     // CONSTANTS
 
@@ -8,8 +10,8 @@ public class Conto {
     private double saldo;
 
     // CONSTRUCTORS
-    public Conto(int numeroConto, String nomeProprietario, double saldo) {
-        this.numeroConto = numeroConto;
+    public Conto(String nomeProprietario) {
+        this.numeroConto = GenerateRandomAccountNumber();
         this.nomeProprietario = nomeProprietario;
         this.saldo = 0.0;
     }
@@ -29,5 +31,29 @@ public class Conto {
 
     public double getSaldo() {
         return saldo;
+    }
+
+    // METHODS
+    public void versa(double importo) {
+        saldo += importo;
+    }
+
+    public void preleva(double importo) {
+        if (importo <= saldo) {
+            saldo -= importo;
+        } else {
+            System.out.println("Saldo non sufficiente");
+        }
+    }
+
+    public String getInformazioniConto() {
+        return "Numero conto: " + numeroConto + "\n" +
+                "Proprietario: " + nomeProprietario + "\n" +
+                "Saldo: " + saldo;
+    }
+
+    private int GenerateRandomAccountNumber() {
+        Random random = new Random();
+        return random.nextInt(1000) + 1;
     }
 }
